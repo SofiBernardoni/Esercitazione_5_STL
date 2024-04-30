@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <limits>
 
 namespace PolygonalLibrary {
 bool ImportMesh(const string& filepath,
@@ -66,7 +67,7 @@ bool ImportMesh(const string& filepath,
                 const unsigned int origin = mesh.Cell1DVertices[edge[e]][0];
                 const unsigned int end = mesh.Cell1DVertices[edge[e]][1];
 
-                if (end-origin==0)
+                if (end-origin <  numeric_limits<double>::epsilon())
                 {
                     cout << "wrong mesh" << endl;
                 }
